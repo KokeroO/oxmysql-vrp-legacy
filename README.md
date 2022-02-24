@@ -20,11 +20,27 @@ Oxmysql is an alternative to the unmaintained mysql-async/ghmattimysql resources
 
 1. Download the latest version of [**oxmysql**](https://github.com/overextended/oxmysql);
 2. Move the `vrp_oxmysql` and `oxmysql` folders to the `resource` folder on the server;
-2. Add the following line to the server's configuration file with your connection details:
+3. Go to `cfg/base.lua` and change the name of the driver to be loaded by the framework.
+```
+local cfg = {}
+
+cfg.db = {
+  driver = "oxmysql",
+  host = "",
+  database = "",
+  user = "",
+  password = ""
+}
+
+return cfg
+```
+:information_source: NOTE: The vRP database configuration is not supported; oxmysql configuration must be used instead.
+
+4. Add the following line to the server's configuration file with your connection details:
 ```
 set mysql_connection_string "mysql://root:12345@localhost/database?multipleStatements=true"
 ```
-3. Start the server;
+5. Start the server;
 
 
 ###### **Configuration optional**
