@@ -2,6 +2,7 @@ local Proxy = module("vrp","lib/Proxy")
 local vRP = Proxy.getInterface("vRP")
 
 local queries = {}
+
 function onInit(cfg)
     return MySQL ~= nil
 end
@@ -12,18 +13,13 @@ end
 
 function onQuery(name, params, mode)
     local query = queries[name]
-    local _params = { _ = true }
-
-    for k,v in pairs(params) do
-        _params['@'..k] = v
-    end
 
     if mode == "execute" then
-        return MySQL.update.await(query, _params)
+        return MySQL.update.await(query, params)
     elseif mode == "scalar" then
-        return MySQL.scalar.await(query, _params)
+        return MySQL.scalar.await(query, params)
     else
-        local result = MySQL.query.await(query, _params)
+        local result = MySQL.query.await(query, params)
         if query:find(";.-SELECT.+LAST_INSERT_ID%(%)") then
             return { { id = result[1].insertId } }, result[1].affectedRows
         end
