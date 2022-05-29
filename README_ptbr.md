@@ -18,7 +18,7 @@ Oxmysql é a alternativa para o recurso descontinuado mysql-async/ghmattimysql, 
 
 ###### **Instalação**
 
-1. Baixe a Release do [**oxmysql**](https://github.com/overextended/oxmysql/releases) (Versões homologadas: oxmysql: >=2.0.1 - <=2.1.1);
+1. Baixe a Release do [**oxmysql**](https://github.com/overextended/oxmysql/releases) (Versões homologadas: oxmysql: >=2.0.1 / <=2.3.1);
 2. Mova as pasta `vrp_oxmysql` e `oxmysql` para a pasta `resource` do seu servidor;
 3. Vá para `cfg/base.lua` e altere o nome do driver para conexão do framework.
 ```
